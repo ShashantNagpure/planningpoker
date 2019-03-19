@@ -1,0 +1,83 @@
+login page
+directs to home
+create a game, join session
+1. create session
+   form to enter
+   story details
+   deck type
+   other options
+generate a session with an id.
+this id can be used to join a session by others
+2. join a session 
+   enter session id to go the game
+a session is completed when all the cards are unveiled- either creator can stop the game, or create a countdown after which a game stops
+-after game stops,cards are revealed to everyone
+-creator can ask for comments if he believes a common consensus is not achieved.
+-after which creator can restart the game and so on.
+-he can also end the game.
+ui for creator
+-list of all partcipants
+-option for unveiling the cards
+-list of rounds, and scores of each member for the round,after round ends
+-option of starting a round, a countdown starts, currenttime-round.timeentered
+-option for ending the game
+
+ui for member
+-list of all participants
+-list of rounds, and scores of each member for the round
+- a common comments section, where each member can give their input
+
+backend- database
+tables for user, his info, list of sessions he created/participated
+table of sessions, story details,creator,list of participants,list of rounds,each round has list of scores of participants,
+session details: story details, list rounds
+round details: list of participants and their scores(scores are updated as soon as they click on a card),status:active/inactive(depends on whether
+creator has clicked on unveiling of cards),time started,time finished
+
+a member can join a go to round only if it is active.
+
+ui-
+user component, sessions component,round component,list of sessions a user participated/created
+
+
+Description:
+Planning poker in which user can join or create a game of poker, in which he can rate a story from numbers of fibonacci sequence
+Flow:
+A user can create a game or enter one via a session id,
+A session id is generated whenever a user creates a game,unique for each game.
+As a creator, he needs to give input about story details, type of deck, other options to create a game
+As a member of a game, one can join a game via session id.
+
+The creator can start a game, in which other members are allowed to join.
+Each game can have multiple rounds depending upon the creator.A round is started by the creator
+When a round starts, a member of the game rates the story and waits for creator to finish the round.
+When a round finishes, creator as well as members can see all the cards/scores of participants.
+Creator start another round if believes a consensus is not attained based on the scores of last completed round
+A comments section is available where any member can provide comments/justification for their scores after a round ends
+Creator can end the game at any point.
+
+Database:
+A user table with entries- list of games participated/created, other personal details about user
+A game table with entries- story name,story description,list of rounds,creator
+A round table with entries- round number,status-active/inactive,starting time,completion time,list of participants and their scores
+
+UI:
+Angular-
+Components: user component, game component, round component
+Link to database:
+whenever a user creates a game, a game is created with and entry is done in database,
+when a user joins a game/round, specific round table is updated in database.
+whenever a user selects a card, the score of that user is updated in round table
+similarily time of round start and time of round end depends on the creator starting/ending a round in UI.
+
+
+
+
+
+
+
+
+
+
+
+
